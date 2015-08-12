@@ -1,0 +1,2 @@
+# gordlist
+Go Wordlist Generator
