@@ -1,2 +1,2 @@
 # gordlist
-Go Wordlist Generator
+Go Wordlist Generator ported from python's wordlist package
