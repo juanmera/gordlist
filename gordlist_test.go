@@ -3,14 +3,24 @@ package gordlist
 import (
     "testing"
 )
-
+const STEP = 5000000
 func TestGenerator(t *testing.T) {
-    g := New("abcd0123")
-    i := 0
-    for _ = range g.Generate(1, 5) {
-        i += 1
+    g := New("0123456789abcdefghijklmnopqrstuvwxyz")
+    results := []string {
+        "f9j80u7",
     }
-    if i != 37448 {
-        t.Fail()
+    var i uint64 = 0
+    for w := range g.GenerateFrom(6, 7, 35400000000) {
+        i += 1
+        if i % STEP == 0 {
+            t.Log(i/STEP)
+            if results[(i/STEP) - 1] != string(w) {
+                t.Logf("expected %s instead of %s at %d\n", results[(i/STEP) - 1], w, i)
+                t.Fail()
+            }
+            if i / STEP == uint64(len(results)) {
+                break
+            }
+        }
     }
 }
