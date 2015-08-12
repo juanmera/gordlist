@@ -1,2 +1,2 @@
 # gordlist
-Go Wordlist Generator ported from python's wordlist package
+Wordlist generator written in Go. Ported from Python's wordlist package
