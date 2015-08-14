@@ -43,6 +43,7 @@ func (m *Generator) generateWords(wordLen uint32, start uint64, out chan []byte)
     var j  uint32
     wordCount := powUint32(m.charsetLen, wordLen)
     relativeStart := uint64(math.Max(0, float64(start) - float64(m.wordCount)))
+    m.wordCount += uint64(math.Min(float64(relativeStart), float64(wordCount)))
     for i = relativeStart; i < wordCount; i++ {
         word := make([]byte, wordLen)
         wordNo = i
@@ -58,9 +59,6 @@ func (m *Generator) generateWords(wordLen uint32, start uint64, out chan []byte)
         }
         out <- word
         m.wordCount += 1
-    }
-    if relativeStart >= wordCount {
-        m.wordCount += wordCount
     }
 }
 
