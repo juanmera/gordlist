@@ -24,3 +24,9 @@ func TestGenerator(t *testing.T) {
         }
     }
 }
+
+func TestPowUint32(t *testing.T) {
+    if powUint32(38, 8) != 4347792138496 {
+        t.Fail()
+    }
+}
